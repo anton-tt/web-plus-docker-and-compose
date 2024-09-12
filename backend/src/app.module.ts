@@ -12,7 +12,7 @@ import { WishlistsModule } from './wishlists/wishlists.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
+      host: 'postgres', //localhost
       port: 5432,
       username: 'student',
       password: 'student',
