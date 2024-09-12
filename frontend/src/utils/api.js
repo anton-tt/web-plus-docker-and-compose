@@ -32,7 +32,7 @@ export const loginUser = (username, password) => {
     .then((data) => {
       if (data.access_token) {
         sessionStorage.setItem("auth_token", data.access_token);
-        console.log(data);
+        //console.log(data);
         return data;
       } else {
         return;

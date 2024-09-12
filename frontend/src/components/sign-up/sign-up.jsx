@@ -83,7 +83,7 @@ export const SignUp = ({ extraClass = "" }) => {
         );
         if (access_token) {
           const userDto = await getOwnUser();
-          console.log(userDto);
+          //console.log(userDto);
 
           if (userDto.id) {
             setUser({ ...userDto });

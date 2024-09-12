@@ -3,4 +3,14 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci --no-audit --no-fund
 COPY . ./
-ENTRYPOINT [ "npm", "run", "start" ]
+RUN npm run build
+
+FROM node:18-alpine as backend
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --omit=dev --no-audit --no-fund \
+  && npm i -g pm2
+COPY --from=builder /app/dist ./dist
+COPY ./ecosystem.config.js ./
+
+ENTRYPOINT [ "pm2-runtime", "start", "ecosystem.config.js" ]

@@ -11,12 +11,18 @@ services:
       - "4000:3000"
     env_file: .env
     restart: always
+    networks:
+      - internal
 
   postgres:
     container_name: "kupi-db-container"
     image: postgres:alpine
     restart: always
     env_file: .env
+    volumes:
+      - pg_data:/data/postgres
+    networks:
+      - internal
   
   frontend:
     container_name: "kupi-frontend-container"
@@ -25,11 +31,22 @@ services:
       dockerfile: Dockerfile
     image: "kupi-frontend-image"
     ports:
-      - '8081:3000'
+      - '8081:80'
     restart: always
+    networks:
+      - external
 
   adminer:
     image: adminer
     restart: always
     ports:
       - '8084:8080'
+    networks:
+      - internal
+
+volumes:
+  pg_data:
+
+networks:
+  internal:
+  external:
