@@ -23,6 +23,7 @@ export const registerUser = (userData) => {
 };
 
 export const loginUser = (username, password) => {
+  console.log(URL);
   return fetch(`${URL}/signin/`, {
     method: "POST",
     headers: headersWithContentType,
@@ -32,7 +33,7 @@ export const loginUser = (username, password) => {
     .then((data) => {
       if (data.access_token) {
         sessionStorage.setItem("auth_token", data.access_token);
-        //console.log(data);
+        console.log(data);
         return data;
       } else {
         return;
