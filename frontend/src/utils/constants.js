@@ -1,5 +1,5 @@
-export const URL = "http://localhost:4000";  // 3000
-
+//export const URL = "http://localhost:4000";  // 3000api.atitov.nomorepartiesco.ru
+export const URL = "api.atitov.nomorepartiesco.ru";
 export const MINIMUM_PASSWORD_LENGTH = 3;
 export const MINIMUM_USERNAME_LENGTH = 3;
 export const MAXIMUM_DESCRIPTION_LENGTH = 200;
